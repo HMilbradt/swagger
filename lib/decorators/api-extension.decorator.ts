@@ -13,7 +13,7 @@ export function ApiExtension(extensionKey: string, extensionProperties: any) {
     extensionValue = [...extensionProperties];
   } else if (
     typeof extensionProperties !== 'object' ||
-    extensionProperties == null
+    extensionProperties === null
   ) {
     extensionValue = extensionProperties;
   } else {
