@@ -8,8 +8,20 @@ export function ApiExtension(extensionKey: string, extensionProperties: any) {
     );
   }
 
+  let extensionValue: any;
+  if (Array.isArray(extensionProperties)) {
+    extensionValue = [...extensionProperties];
+  } else if (
+    typeof extensionProperties !== 'object' ||
+    extensionProperties == null
+  ) {
+    extensionValue = extensionProperties;
+  } else {
+    extensionValue = { ...extensionProperties };
+  }
+
   const extensionObject = {
-    [extensionKey]: extensionProperties
+    [extensionKey]: extensionValue
   };
 
   return createMixedDecorator(DECORATORS.API_EXTENSION, extensionObject);
